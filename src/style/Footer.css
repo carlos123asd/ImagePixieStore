@@ -1,0 +1,20 @@
+.footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px #94A5AC;
+    padding: 1.5em 0;
+}
+.btnLinkedinFooter{
+    margin-right: .5em;
+}
+.btnLinkedinFooter:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 3px black;
+}
+.btnGitFooter:hover{
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px black;
+    cursor: pointer;
+}
