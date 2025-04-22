@@ -8,6 +8,10 @@
 }
 .btnLinkedinFooter{
     margin-right: .5em;
+    transition: all .5s ease-in-out;
+}
+.btnGitFooter{
+    transition: all .5s ease-in-out;
 }
 .btnLinkedinFooter:hover{
     cursor: pointer;
