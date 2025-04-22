@@ -1,0 +1,22 @@
+:root {
+  --color-text: #000000;
+  --color-text-secondary: #94A5AC;
+  --color-bg-body-init: #F0F2F5;
+  --font-size-base: 16px;
+  --font-primary: 'Inter', sans-serif
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  background: #fff;
+  color: var(--color-text);
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.backgroundSegundary{
+  background: var(--color-text-secondary);
+}
