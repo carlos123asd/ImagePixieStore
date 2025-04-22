@@ -1,6 +1,7 @@
 :root {
   --color-text: #000000;
   --color-text-secondary: #94A5AC;
+  --color-text-trir: #fff;
   --color-bg-body-init: #F0F2F5;
   --font-size-base: 16px;
   --font-primary: 'Inter', sans-serif
@@ -19,4 +20,7 @@ body {
 
 .backgroundSegundary{
   background: var(--color-text-secondary);
+}
+.colorTextSegundary{
+  color: var(--color-text-trir);
 }
