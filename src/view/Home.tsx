@@ -10,9 +10,9 @@ export default function Home(){
     return <>
         <Nav />
         <Header />
-        <TitSection titulo="Trending searches"/>
+        <TitSection titulo="Trending searches" subtitulo={null} />
         <GroupCardTags />
-        <TitSection titulo="New & Notable"/>
+        <TitSection titulo="New & Notable" subtitulo={null} />
         <Footer />
     </>
 }
