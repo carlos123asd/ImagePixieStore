@@ -8,6 +8,8 @@ export default function GroupCardTags(){
             display:"flex",
             gap: "1em",
             paddingLeft: "3%",
+            margin: "2em 0",
+            flexWrap: "wrap"
         }}>
             {
                 recordTags.map((tag:typeTags) => {

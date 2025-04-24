@@ -4,6 +4,6 @@ export default function TitSection({titulo,subtitulo}:{titulo:string,subtitulo:s
         <h2 style={{
             padding: "0 2%"
         }}>{titulo}</h2>
-        <span style={{padding: "0 2%"}}>{subtitulo}</span>
+        {subtitulo && <span style={{padding: "0 2%"}}>{subtitulo}</span>}
     </>
 }
