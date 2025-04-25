@@ -12,8 +12,8 @@ export default function GroupCardTags(){
             flexWrap: "wrap"
         }}>
             {
-                recordTags.map((tag:typeTags) => {
-                    return <CardTag titulo={tag} />
+                recordTags.map((tag:typeTags,index:number) => {
+                    return <CardTag key={index} titulo={tag} />
                 })
             }
         </div>

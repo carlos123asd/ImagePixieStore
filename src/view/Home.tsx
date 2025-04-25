@@ -3,6 +3,7 @@ import GroupCardTags from "../components/molecules/GroupCardTags";
 import Footer from "../components/organism/Footer";
 import Header from "../components/organism/Header";
 import Nav from "../components/organism/Nav";
+import GroupImages from "../components/molecules/GroupImages";
 
 
 export default function Home(){
@@ -13,6 +14,7 @@ export default function Home(){
         <TitSection titulo="Trending searches" subtitulo={null} />
         <GroupCardTags />
         <TitSection titulo="New & Notable" subtitulo={null} />
+        <GroupImages />
         <Footer />
     </>
 }
