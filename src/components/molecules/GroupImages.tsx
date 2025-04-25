@@ -39,8 +39,8 @@ export default function GroupImages(){
         {
             !loading && <div className="images">
                 {
-                    listImages.map((image:typeUnsplashImage) => {
-                        return <CardImage info={image}/>
+                    listImages.map((image:typeUnsplashImage, index:number) => {
+                        return <CardImage key={index} info={image}/>
                     })
                 }
             </div>
