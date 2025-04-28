@@ -5,7 +5,6 @@ export const getImagesThunk = createAsyncThunk('imagesList', async () => {
         const response = await fetch(`https://api.unsplash.com/photos?page=1&client_id=${import.meta.env.VITE_ACCESS_KEY}`);
         if(response.ok){
             const json = await response.json();
-            console.log(json)
             return json
         }else{
             console.log("FAIL GET-IMAGES")

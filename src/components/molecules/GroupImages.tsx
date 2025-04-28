@@ -23,7 +23,6 @@ export default function GroupImages(){
             setTimeout(() => {
                 setLoading(false)
                 setListImages(dataImageList)
-                console.log('data',dataImageList)
             },2000)
         }else{
             console.log("error")

@@ -2,29 +2,18 @@ import { useState } from "react";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { GoHeartFill } from "react-icons/go";
 import { IoMdDownload } from "react-icons/io";
+import {useLocalStorage} from "../../hook/useLocalStorage";
 
 export default function CardImage({info}:{info:typeUnsplashImage}){
     const [liked,setLiked] = useState<boolean>(false);
+    const {likeImageStorage} = useLocalStorage();
 
     const handleLike = () => {
         setLiked((prevLike) => {
             const newLike = !prevLike
             return newLike
         })
-        
-        const listImageLike:[] = JSON.parse(localStorage.getItem('imageLiked') || '[]')
-        const imageFound = listImageLike.find((imageliked:typeUnsplashImage) => {
-            return imageliked.id === info.id
-        })
-        if(!imageFound && !liked){
-            localStorage.setItem('imageLiked', JSON.stringify([...listImageLike,info]));
-        }else{
-            const newList = listImageLike.filter((imageLiked:typeUnsplashImage) => {
-                return imageLiked.id != info.id
-            })
-            localStorage.setItem('imageLiked', JSON.stringify(newList));
-        }
-        
+        likeImageStorage(info)
     }
 
     return <>
