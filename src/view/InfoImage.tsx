@@ -4,16 +4,26 @@ import GroupCardTags from "../components/molecules/GroupCardTags";
 import Footer from "../components/organism/Footer";
 import Nav from "../components/organism/Nav";
 import PhotoDescription from "../components/organism/PhotoDescription";
-import imageTest from "../assets/testInfoImage.jpg"
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import InfoAuthor from "../components/organism/InfoAuthor";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { typeUnsplashImage } from "../type/typeUnsplashImage";
+import { useSelector } from "react-redux";
+import { RootState } from "../features/store/store";
 
 export default function InfoImage(){
     const {state} = useLocation()
+    const navigation = useNavigate()
     const {image} = state as { image: typeUnsplashImage } 
-    
+    const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
+    const ListImageSwiper = dataImageList.filter((imageList) => {
+        return imageList.id !== image.id
+    }).slice(0,9)
+
+    const handleViewImage = (image:typeUnsplashImage) => {
+        navigation("/details",{ state: { image: image } })
+    }
+
     return <>
         <Nav />
         <div className="contentMainInfoImage">
@@ -38,10 +48,16 @@ export default function InfoImage(){
                    slideShadows: true,
                  }}
                 modules={[EffectCoverflow,Navigation,Pagination]}
-                >
-                    <SwiperSlide className="swiper-slide"><img style={{width:"100%",height:"100%"}} src={imageTest} alt="" /></SwiperSlide>
-                    <SwiperSlide className="swiper-slide"><img style={{width:"100%",height:"100%"}} src={imageTest} alt="" /></SwiperSlide>
-                    <SwiperSlide className="swiper-slide"><img style={{width:"100%",height:"100%"}} src={imageTest} alt="" /></SwiperSlide>
+                >   {
+                        ListImageSwiper && ListImageSwiper.map((imageSwiper:typeUnsplashImage) => {
+                            return <SwiperSlide className="swiper-slide">
+                                <img style={{width:"100%",height:"100%"}} 
+                                onClick={() => handleViewImage(imageSwiper)}
+                                src={imageSwiper.urls.full} 
+                                alt={imageSwiper.alt_description ? imageSwiper.alt_description : "image not found"} />
+                                </SwiperSlide>
+                        })
+                    }
                 </Swiper>
             </div>
             <div className="contentRightInfoImage">
