@@ -8,7 +8,7 @@ export default function GroupImageLiked(){
     return  <>
         <div className="images">
             {
-                collection.map((imageLiked:typeUnsplashImage,index:number) => {
+                collection && collection.map((imageLiked:typeUnsplashImage,index:number) => {
                     return <CardImageLiked info={imageLiked} key={index} />
                 })
             }
