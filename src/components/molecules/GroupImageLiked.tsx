@@ -3,7 +3,7 @@ import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import {useLocalStorage} from "../../hook/useLocalStorage";
 
 export default function GroupImageLiked(){
-    const {collection} = useLocalStorage();
+    const {collection} = useLocalStorage("imageLiked",[]);
 
     return  <>
         <div className="images">

@@ -13,7 +13,7 @@ export default function GroupImages(){
     const stateImageList = useSelector<RootState, string>((state) => state.images.status);
     const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
     const [listImages, setListImages] = useState<typeUnsplashImage[]>([]);
-    const {likeImageStorage} = useLocalStorage('imageLiked',[]);
+    const {likeImageStorage,collection} = useLocalStorage('imageLiked',[]);
     
 
     useEffect(() => {
@@ -41,7 +41,8 @@ export default function GroupImages(){
             !loading && <div className="images">
                 {
                     listImages.map((image:typeUnsplashImage, index:number) => {
-                        return <CardImage key={index} info={image} likeImageStorage={likeImageStorage} />
+                        const isLiked = collection.some((imageCollection) => imageCollection.id === image.id)
+                        return <CardImage key={index} isLiked={isLiked}  info={image} likeImageStorage={likeImageStorage} />
                     })
                 }
             </div>
