@@ -1,12 +1,11 @@
 import Atropos from "atropos/react";
-import imageTest from "../../assets/testInfoImage.jpg"
 import TitSection from "../atoms/TitSection";
 
-export default function PhotoDescription(){
+export default function PhotoDescription({url, descripcion, alt}:{url:string,descripcion:string|null,alt:string|null}){
     return <>
         <Atropos>
-            <img width={800} height={600} src={imageTest} alt="" />
+            <img width={800} height={600} src={url} alt={descripcion ? descripcion : "image not found"} />
         </Atropos>
-        <TitSection titulo="Photo Description" subtitulo="Middle of Nowhere airplane on ground surrounded with trees" />
+        <TitSection titulo={alt === descripcion ? "Photo Description" : alt} subtitulo={descripcion} />
     </>
 }

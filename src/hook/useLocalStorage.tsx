@@ -7,13 +7,7 @@ export function useLocalStorage(key: string, initValue:typeUnsplashImage[]) {
         if(!data){
             return initValue
         }
-        try {
-            return JSON.parse(data) as typeUnsplashImage[];
-          } catch (error) {
-            console.error("error de renderizacion local: "+error)
-            localStorage.removeItem(key);
-            return initValue;
-          }
+        return JSON.parse(data)
     })
 
     useEffect(() => {

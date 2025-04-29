@@ -8,6 +8,7 @@ import '../../node_modules/swiper/modules/pagination.css';
 import Home from './Home'
 import MyCollection from './MyCollection'
 import { store } from '../features/store/store';
+import InfoImage from './InfoImage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/mycollection' element={<MyCollection />} />
+          <Route path='/details' element={<InfoImage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -1,4 +1,4 @@
-export default function TitSection({titulo,subtitulo}:{titulo:string,subtitulo:string | null}){
+export default function TitSection({titulo,subtitulo}:{titulo:string|null,subtitulo:string | null}){
 
     return <>
         <h2 style={{

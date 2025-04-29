@@ -7,13 +7,18 @@ import PhotoDescription from "../components/organism/PhotoDescription";
 import imageTest from "../assets/testInfoImage.jpg"
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import InfoAuthor from "../components/organism/InfoAuthor";
+import { useLocation } from "react-router-dom";
+import { typeUnsplashImage } from "../type/typeUnsplashImage";
 
 export default function InfoImage(){
+    const {state} = useLocation()
+    const {image} = state as { image: typeUnsplashImage } 
+    
     return <>
         <Nav />
         <div className="contentMainInfoImage">
             <div className="contentLeftInfoImage">
-                <PhotoDescription />
+                <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
                 <GroupCardTags />
                 <TitSection titulo="More Images" subtitulo={null} />
                 <Swiper
@@ -42,7 +47,7 @@ export default function InfoImage(){
             <div className="contentRightInfoImage">
                 <div style={{position: "fixed", width: "30%"}}>
                     <TitSection titulo="Author" subtitulo={null} />
-                    <InfoAuthor />
+                    <InfoAuthor name={image.user.name} numPhotos={image.user.total_photos} numLikes={image.likes} resolution={`${image.width} x ${image.height}`} datePublish={image.created_at} image={image.user.profile_image.medium}/>
                 </div>
             </div>
         </div>
