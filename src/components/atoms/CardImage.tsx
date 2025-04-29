@@ -2,11 +2,10 @@ import { useState } from "react";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { GoHeartFill } from "react-icons/go";
 import { IoMdDownload } from "react-icons/io";
-import {useLocalStorage} from "../../hook/useLocalStorage";
 
-export default function CardImage({info}:{info:typeUnsplashImage}){
+export default function CardImage({info,likeImageStorage}:{info:typeUnsplashImage,likeImageStorage:(image: typeUnsplashImage) => void}){
     const [liked,setLiked] = useState<boolean>(false);
-    const {likeImageStorage} = useLocalStorage();
+    
 
     const handleLike = () => {
         setLiked((prevLike) => {
@@ -14,7 +13,7 @@ export default function CardImage({info}:{info:typeUnsplashImage}){
             return newLike
         })
         likeImageStorage(info)
-    }
+    } 
 
     return <>
         <div className="images__image">

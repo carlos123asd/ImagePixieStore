@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from "../../features/store/store";
 import Spinner from "../atoms/Spinner";
 import CardImage from "../atoms/CardImage";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
+import { useLocalStorage } from "../../hook/useLocalStorage";
 
 export default function GroupImages(){
     const [loading,setLoading] = useState(true);
@@ -12,6 +13,7 @@ export default function GroupImages(){
     const stateImageList = useSelector<RootState, string>((state) => state.images.status);
     const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
     const [listImages, setListImages] = useState<typeUnsplashImage[]>([]);
+    const {likeImageStorage} = useLocalStorage('imageLiked',[]);
     
 
     useEffect(() => {
@@ -27,7 +29,7 @@ export default function GroupImages(){
         }else{
             console.log("error")
         }
-    },[stateImageList])
+    },[stateImageList]) 
 
     return <>
         {
@@ -39,7 +41,7 @@ export default function GroupImages(){
             !loading && <div className="images">
                 {
                     listImages.map((image:typeUnsplashImage, index:number) => {
-                        return <CardImage key={index} info={image}/>
+                        return <CardImage key={index} info={image} likeImageStorage={likeImageStorage} />
                     })
                 }
             </div>
