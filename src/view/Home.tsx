@@ -18,7 +18,7 @@ export default function Home(){
         <Nav />
         <Header />
         <TitSection titulo="Trending searches" subtitulo={null} />
-        <GroupCardTags setWord={setWord}/>
+        <GroupCardTags setWord={setWord} word={word} />
         <TitSection titulo="New & Notable" subtitulo={null} />
         <GroupImages word={word} />
         <Footer />

@@ -27,7 +27,9 @@ export default function GroupImages({word}:{word:string}){
     useEffect(() => {
         if (dataImageList.length > 0) {
           setListImages(dataImageList);
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          },1000)
         }
     }, [dataImageList]);
 
