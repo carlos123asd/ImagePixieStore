@@ -6,23 +6,13 @@ import Spinner from "../atoms/Spinner";
 import CardImage from "../atoms/CardImage";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { useLocalStorage } from "../../hook/useLocalStorage";
-import { getImagesForTag } from "../../features/thunks/getImagesForTag";
 
-export default function GroupImages({word}:{word:string}){
+export default function GroupImages(){
     const [loading,setLoading] = useState(true);
     const dispatch = useDispatch<AppDispatch>();
     const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
     const [listImages, setListImages] = useState<typeUnsplashImage[]>([]);
     const {likeImageStorage,collection} = useLocalStorage('imageLiked',[]);
-    
-    useEffect(() => {
-        setLoading(true);
-        if (word) {
-          dispatch(getImagesForTag(word));
-        } else {
-          dispatch(getImagesThunk());
-        }
-    }, [word, dispatch]);
 
     useEffect(() => {
         setLoading(true);
@@ -31,8 +21,10 @@ export default function GroupImages({word}:{word:string}){
           setTimeout(() => {
             setLoading(false);
           },1000)
+        }else{
+            dispatch(getImagesThunk());
         }
-    }, [dataImageList]);
+    }, [dataImageList,dispatch]);
 
     return <>
         {

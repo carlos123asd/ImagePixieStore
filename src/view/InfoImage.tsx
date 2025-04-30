@@ -29,7 +29,7 @@ export default function InfoImage(){
         <div className="contentMainInfoImage">
             <div className="contentLeftInfoImage">
                 <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
-                <GroupCardTags />
+                <GroupCardTags setWord={() => {}} word={null} />
                 <TitSection titulo="More Images" subtitulo={null} />
                 <Swiper
                 className="swiper"

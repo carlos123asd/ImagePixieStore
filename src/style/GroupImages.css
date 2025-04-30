@@ -10,6 +10,12 @@
     margin-bottom: 10px;
     break-inside: avoid;
     position: relative;
+    transition: all .3s ease-in-out;
+}
+.images__image:hover{
+    scale: 1.05;
+    z-index: 10;
+    cursor:pointer;
 }
 .images__image__img{
     max-width: 100%;

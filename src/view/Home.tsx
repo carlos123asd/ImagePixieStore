@@ -20,7 +20,7 @@ export default function Home(){
         <TitSection titulo="Trending searches" subtitulo={null} />
         <GroupCardTags setWord={setWord} word={word} />
         <TitSection titulo="New & Notable" subtitulo={null} />
-        <GroupImages word={word} />
+        <GroupImages />
         <Footer />
     </>
 }
