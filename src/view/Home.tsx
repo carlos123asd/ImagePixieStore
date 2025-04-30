@@ -4,17 +4,23 @@ import Footer from "../components/organism/Footer";
 import Header from "../components/organism/Header";
 import Nav from "../components/organism/Nav";
 import GroupImages from "../components/molecules/GroupImages";
+import { useEffect, useState } from "react";
 
 
 export default function Home(){
-    
+    const [word,setWord] = useState<string>("");
+
+    useEffect(() => {
+        console.log(word)
+    },[word])
+
     return <>
         <Nav />
         <Header />
         <TitSection titulo="Trending searches" subtitulo={null} />
-        <GroupCardTags />
+        <GroupCardTags setWord={setWord}/>
         <TitSection titulo="New & Notable" subtitulo={null} />
-        <GroupImages />
+        <GroupImages word={word} />
         <Footer />
     </>
 }

@@ -2,7 +2,7 @@ import { typeTags } from "../../type/typeTags";
 import CardTag from "../atoms/CardTag";
 import recordTags from "../../json/tags.json";
 
-export default function GroupCardTags(){
+export default function GroupCardTags({setWord}:{setWord:(word:string) => void}){
     return <>
         <div style={{
             display:"flex",
@@ -13,7 +13,7 @@ export default function GroupCardTags(){
         }}>
             {
                 recordTags.map((tag:typeTags,index:number) => {
-                    return <CardTag key={index} titulo={tag} />
+                    return <CardTag setWord={setWord} key={index} titulo={tag} />
                 })
             }
         </div>

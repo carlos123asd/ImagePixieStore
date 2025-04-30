@@ -1,11 +1,9 @@
 import { configureStore, Action, ThunkAction  } from "@reduxjs/toolkit";
 import imageReducer from '../slices/listImagesSlice'
-import imageByTag from '../slices/listImagesByTagSlice'
 
 export const store = configureStore({
     reducer: {
-        images: imageReducer,
-        imagesBytag: imageByTag
+        images: imageReducer
     }
 });
 

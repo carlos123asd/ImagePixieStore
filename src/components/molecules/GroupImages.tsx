@@ -6,30 +6,30 @@ import Spinner from "../atoms/Spinner";
 import CardImage from "../atoms/CardImage";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { useLocalStorage } from "../../hook/useLocalStorage";
+import { getImagesForTag } from "../../features/thunks/getImagesForTag";
 
-export default function GroupImages(){
+export default function GroupImages({word}:{word:string}){
     const [loading,setLoading] = useState(true);
     const dispatch = useDispatch<AppDispatch>();
-    const stateImageList = useSelector<RootState, string>((state) => state.images.status);
     const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
     const [listImages, setListImages] = useState<typeUnsplashImage[]>([]);
     const {likeImageStorage,collection} = useLocalStorage('imageLiked',[]);
     
+    useEffect(() => {
+        setLoading(true);
+        if (word) {
+          dispatch(getImagesForTag(word));
+        } else {
+          dispatch(getImagesThunk());
+        }
+    }, [word, dispatch]);
 
     useEffect(() => {
-        if(stateImageList === 'idle'){
-            dispatch(getImagesThunk())
-        }else if(stateImageList === 'pending'){
-            setLoading(true)
-        }else if(stateImageList === 'fulfilled'){
-            setTimeout(() => {
-                setLoading(false)
-                setListImages(dataImageList)
-            },2000)
-        }else{
-            console.log("error")
+        if (dataImageList.length > 0) {
+          setListImages(dataImageList);
+          setLoading(false);
         }
-    },[stateImageList]) 
+    }, [dataImageList]);
 
     return <>
         {
