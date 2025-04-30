@@ -25,3 +25,7 @@
     color: #2194F2;
     background: #fff;
 }
+.cardTagDelete:hover{
+    box-shadow: 0 0 10px 1px #f22121;
+    color: #f22121;
+}

@@ -14,6 +14,12 @@ export function useLocalStorage(key: string, initValue:typeUnsplashImage[]) {
         localStorage.setItem(key, JSON.stringify(collection))
     }, [key, collection])
 
+    const existImageOnLocalStorage = (idImage:string) => {
+        const index = collection.find((refImage:typeUnsplashImage) => {
+            return refImage.id === idImage
+        })
+        return index ? true : false
+    }
 
     const likeImageStorage = (imagen:typeUnsplashImage) => {
         setCollection((prevCollection) => {
@@ -30,5 +36,5 @@ export function useLocalStorage(key: string, initValue:typeUnsplashImage[]) {
         })
     }
 
-    return {collection,likeImageStorage} as const;
+    return {collection,likeImageStorage,existImageOnLocalStorage} as const;
 }

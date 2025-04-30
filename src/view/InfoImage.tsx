@@ -63,7 +63,8 @@ export default function InfoImage(){
             <div className="contentRightInfoImage">
                 <div style={{position: "fixed", width: "30%"}}>
                     <TitSection titulo="Author" subtitulo={null} />
-                    <InfoAuthor 
+                    <InfoAuthor
+                    id={image.id} 
                     name={image.user.name} 
                     numPhotos={image.user.total_photos} 
                     numLikes={image.likes} 

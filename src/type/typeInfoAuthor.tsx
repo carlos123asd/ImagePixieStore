@@ -1,4 +1,5 @@
 export type typeInfoAuthor = {
+    id:string,
     image:string,
     name:string,
     numPhotos:number,
