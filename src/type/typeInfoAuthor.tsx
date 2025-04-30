@@ -4,5 +4,6 @@ export type typeInfoAuthor = {
     numPhotos:number,
     numLikes:number,
     resolution:string,
-    datePublish:string
+    datePublish:string,
+    download:string | null
 }

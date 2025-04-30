@@ -25,6 +25,7 @@ export type typeUnsplashImage = {
     height: number;
     links: {
       html: string;
+      download: string;
     };
     // Otras propiedades que necesites
   }

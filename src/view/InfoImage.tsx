@@ -63,7 +63,15 @@ export default function InfoImage(){
             <div className="contentRightInfoImage">
                 <div style={{position: "fixed", width: "30%"}}>
                     <TitSection titulo="Author" subtitulo={null} />
-                    <InfoAuthor name={image.user.name} numPhotos={image.user.total_photos} numLikes={image.likes} resolution={`${image.width} x ${image.height}`} datePublish={image.created_at} image={image.user.profile_image.medium}/>
+                    <InfoAuthor 
+                    name={image.user.name} 
+                    numPhotos={image.user.total_photos} 
+                    numLikes={image.likes} 
+                    resolution={`${image.width} x ${image.height}`} 
+                    datePublish={image.created_at} 
+                    image={image.user.profile_image.medium}
+                    download={image.urls.full}
+                    />
                 </div>
             </div>
         </div>

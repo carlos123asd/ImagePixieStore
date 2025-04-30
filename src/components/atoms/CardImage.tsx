@@ -1,9 +1,12 @@
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { GoHeartFill } from "react-icons/go";
 import { IoMdDownload } from "react-icons/io";
+import { downloadImage } from "../../utilities/downloadImage";
 
 export default function CardImage({isLiked,info,likeImageStorage}:{isLiked:boolean,info:typeUnsplashImage,likeImageStorage:(image: typeUnsplashImage) => void}){
-    
+    const fileName:string = `pixiestore__${info.user.name}_${info.created_at}`
+    const urlDownload:string = info.urls.full
+
     const handleLike = () => {
         likeImageStorage(info)
     } 
@@ -12,7 +15,7 @@ export default function CardImage({isLiked,info,likeImageStorage}:{isLiked:boole
         <div className="images__image">
             <div className="contentBtnsCardImage">
                 <div onClick={handleLike} className="btnCardImage"><GoHeartFill color={isLiked ? "red" : "black"} size={30} /></div>
-                <div className="btnCardImage"><IoMdDownload color="black" size={30} /></div>
+                <div onClick={() => downloadImage(fileName,urlDownload)} className="btnCardImage"><IoMdDownload color="black" size={30} /></div>
             </div>
             <img className="images__image__img" src={info.urls.full} alt={info.alt_description ? info.alt_description : "Description not found"} />
         </div>
