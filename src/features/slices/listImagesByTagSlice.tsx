@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getImagesThunk } from "../thunks/getImagesThunk";
 import { typeListImage } from "../../type/typeListImage";
-
+import { getImagesForTag } from "../thunks/getImagesForTag";
 
 const initialState:typeListImage = {
     data: [],
@@ -9,25 +8,23 @@ const initialState:typeListImage = {
     error: null
 }
 
-const listImagesSlice = createSlice({
-    name: 'imagesList',
+const listImagesByTagSlice = createSlice({
+    name: 'imagesListByTag',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(getImagesThunk.pending, (state) => {
-            state.status = 'pending';
-            
+        .addCase(getImagesForTag.pending,(state) => {
+            state.status = 'pending'
         })
-        .addCase(getImagesThunk.fulfilled, (state,action) => {
-            state.status = 'fulfilled';
+        .addCase(getImagesForTag.fulfilled,(state,action) => {
+            state.status = 'fulfilled'
             state.data = action.payload
         })
-        .addCase(getImagesThunk.rejected, (state,action) => {
+        .addCase(getImagesForTag.rejected,(state,action) => {
             state.status = 'rejected'
             state.error = action.error?.message ?? null
         })
     }
-});
-
-export default listImagesSlice.reducer;
+})
+export default listImagesByTagSlice.reducer;
