@@ -5,7 +5,6 @@ export default function CardTag({word,setWord,titulo}:{word:string,setWord:(word
     const styleActive = {
         scale: "1.1",
         boxShadow: "0 0 10px 1px #2194F2",
-        transition: "all .4s ease-in-out",
         color: "#2194F2",
         background: "#fff",
     }
