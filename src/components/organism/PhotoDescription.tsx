@@ -23,11 +23,11 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             color={closeHover ? "#fff" : "#f0f1f5d6"} 
             size={100} 
             className="closeBtnModal" />
-            <Atropos style={{width:"60%",alignSelf:"flex-start", marginTop: "8%", position:"fixed"}}>
+            <Atropos style={{width:"60%",alignSelf:"flex-start", padding: "2em 0"}}>
                 <div
                 style={{
                     width: "100%",
-                    height: "600px",
+                    height: "auto",
                 }}
                 >
                 <img
@@ -50,6 +50,7 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             />
             <div className="overlay">
                 <FaEye size={150} color="#fff"/>
+                <h1>View Image</h1>
             </div>
         </div>
         <TitSection titulo={alt === descripcion ? "Photo Description" : alt} subtitulo={descripcion} />
