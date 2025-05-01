@@ -4,4 +4,5 @@ export type typeListImage = {
     error: string | null;
     total: number;
     total_pages: number;
+    tag: string;
 }

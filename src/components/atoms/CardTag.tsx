@@ -1,10 +1,12 @@
-import { useDispatch } from "react-redux";
-import { typeTags } from "../../type/typeTags";
-import { AppDispatch } from "../../features/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../features/store/store";
 import { getImagesForTag } from "../../features/thunks/getImagesForTag";
+import { setTag } from "../../features/slices/listImagesSlice";
 
-export default function CardTag({word,setWord,titulo}:{word:string,setWord:(word:string) => void,titulo:typeTags}){
+export default function CardTag({titulo}:{titulo:string}){
     const dispatch = useDispatch<AppDispatch>()
+    const word = useSelector<RootState>((state) => state.images.tag)
+
     const styleActive = {
         scale: "1.1",
         boxShadow: "0 0 10px 1px #2194F2",
@@ -13,16 +15,16 @@ export default function CardTag({word,setWord,titulo}:{word:string,setWord:(word
     }
 
     const handleClickTag = () => {
-        setWord(titulo.name)
-        dispatch(getImagesForTag(titulo.name))
+        dispatch(getImagesForTag(titulo))
+        dispatch((setTag(titulo)))
     }
 
     return <>
         <div 
         onClick={handleClickTag} 
-        style={word === titulo.name ? styleActive : {}}
+        style={word === titulo ? styleActive : {}}
         className="backgroundSegundary cardTag">
-            {titulo.name}
+            {titulo}
         </div>
     </>
 }

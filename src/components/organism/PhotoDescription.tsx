@@ -23,7 +23,7 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             color={closeHover ? "#fff" : "#f0f1f5d6"} 
             size={100} 
             className="closeBtnModal" />
-            <Atropos style={{width:"60%",alignSelf:"flex-start", padding: "2em 0"}}>
+            <Atropos style={{width:"60%",alignSelf:"center", padding: "2em 0"}}>
                 <div
                 style={{
                     width: "100%",

@@ -10,12 +10,17 @@ const initialState:typeListImage = {
     error: null,
     total: 0,
     total_pages: 0,
+    tag: ""
 }
 
 const listImagesSlice = createSlice({
     name: 'imagesList',
     initialState,
-    reducers: {},
+    reducers: {
+        setTag: (state,action) => {
+            state.tag = action.payload
+        }
+    },
     extraReducers: (builder) => {
         //Thunk images standar
         builder
@@ -46,5 +51,5 @@ const listImagesSlice = createSlice({
         })
     }
 });
-
+export const { setTag } = listImagesSlice.actions;
 export default listImagesSlice.reducer;

@@ -29,3 +29,15 @@
     box-shadow: 0 0 10px 1px #f22121;
     color: #f22121;
 }
+.btnRemoveFilter{
+    transition: all .3s ease-in-out;
+}
+.btnRemoveFilter:hover{
+    cursor: pointer;
+    letter-spacing: .1em;
+    color: #f22121be !important;
+    text-shadow: 0 0 10px #f22121 !important;
+}
+.btnDisableFilter{
+    cursor: not-allowed;
+}

@@ -1,7 +1,7 @@
 import { CiHeart } from "react-icons/ci";
 import { typeInfoAuthor } from "../../type/typeInfoAuthor";
 
-export default function CardInfoImage({name,numPhotos,numLikes,resolution,datePublish,image,download}:typeInfoAuthor){
+export default function CardInfoImage({name,numPhotos,numLikes,resolution,datePublish,image}:typeInfoAuthor){
     const date = datePublish.split('T')[0];
     const formatDate = new Date(date).toLocaleDateString("en-GB",{
         day: "2-digit",

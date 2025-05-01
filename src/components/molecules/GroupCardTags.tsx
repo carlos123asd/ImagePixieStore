@@ -1,21 +1,47 @@
 import { typeTags } from "../../type/typeTags";
 import CardTag from "../atoms/CardTag";
 import recordTags from "../../json/tags.json";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../features/store/store";
+import { setTag } from "../../features/slices/listImagesSlice";
+import { getImagesThunk } from "../../features/thunks/getImagesThunk";
 
-export default function GroupCardTags({setWord,word}:{setWord:(word:string) => void | null,word:string | null}){
+export default function GroupCardTags(){
+    const dispatch = useDispatch<AppDispatch>()
+    const word = useSelector<RootState>((state) => state.images.tag)
+
+    const handleRemoveKeyWord = () => { 
+        dispatch(setTag(""))
+        dispatch(getImagesThunk())
+    }
+
     return <>
         <div style={{
-            display:"flex",
-            gap: "1em",
-            paddingLeft: "3%",
-            margin: "2em 0",
-            flexWrap: "wrap"
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0 3%",
         }}>
-            {
-                recordTags.map((tag:typeTags,index:number) => {
-                    return <CardTag word={word ? word : ""} setWord={setWord} key={index} titulo={tag} />
-                })
-            }
+            <div style={{
+                display:"flex",
+                gap: "1em",
+                margin: "2em 0",
+                flexWrap: "wrap"
+            }}>
+                {
+                    recordTags.map((tag:typeTags,index:number) => {
+                        return <CardTag key={index} titulo={tag.name} />
+                    })
+                }
+            </div>
+            <span 
+            onClick={handleRemoveKeyWord} 
+            style={{
+                fontSize: "1.4rem",
+                textShadow: word ? "0 0 10px #2194F2" : "",
+                color: word ? "#2194F2be" : "#93A4B5"
+            }} 
+            className={word ? "btnRemoveFilter" : "btnDisableFilter"}>Remove keyword</span>
         </div>
     </>
 }
