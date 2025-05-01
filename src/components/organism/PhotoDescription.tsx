@@ -3,6 +3,7 @@ import TitSection from "../atoms/TitSection";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { GiClick } from "react-icons/gi";
 
 export default function PhotoDescription({url, descripcion, alt}:{url:string,descripcion:string|null,alt:string|null}){
     const [modal,setModal] = useState<boolean>(false);
@@ -44,6 +45,9 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             </Atropos>
         </div>
         <div onClick={handleShowModal} className="contentImageInfoImage">
+            <div className="clickIconInfoPhoto">
+                <GiClick size={30} color="#fff"/>
+            </div>
             <img
                 src={url}
                 alt={descripcion || "image"}
