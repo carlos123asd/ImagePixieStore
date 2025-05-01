@@ -110,7 +110,7 @@
   }
 
   .closeBtnModal{
-    position: absolute;
+    position: fixed;
     right: 5%;
     top:  5%;
     transition: all .3s ease;

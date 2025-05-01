@@ -60,7 +60,11 @@ export default function InfoImage(){
                 >   {
                         ListImageSwiper && ListImageSwiper.map((imageSwiper:typeUnsplashImage) => {
                             return <SwiperSlide className="swiper-slide">
-                                <img style={{width:"100%",height:"100%"}} 
+                                <img style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                borderRadius: "1em",}} 
                                 onClick={() => handleViewImage(imageSwiper)}
                                 src={imageSwiper.urls.full} 
                                 alt={imageSwiper.alt_description ? imageSwiper.alt_description : "image not found"} />
