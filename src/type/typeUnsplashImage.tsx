@@ -19,6 +19,12 @@ export type typeUnsplashImage = {
         large: string;
         medium: string;
         small: string
+      };
+      social: {
+        instagram_username: string | null;
+        paypal_email: string | null;
+        portfolio_url: string | null;
+        twitter_username: string | null;
       }
     };
     width: number;

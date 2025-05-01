@@ -24,3 +24,17 @@
     width: 500px !important;
     height: 500px !important;
   }
+  .btnSocial{
+    border-radius: 1em;
+    background: #F0F1F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    transition: all .3s ease-in-out;
+  }
+  .btnSocial:hover{
+    scale: 1.1;
+    background: #fff;
+    box-shadow: 0 0 10px 1px #36A1F4;
+  }

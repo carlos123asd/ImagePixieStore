@@ -10,6 +10,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { typeUnsplashImage } from "../type/typeUnsplashImage";
 import { useSelector } from "react-redux";
 import { RootState } from "../features/store/store";
+import GroupIconsSocial from "../components/molecules/GroupIconsSocial";
+import { typeInfoSocial } from "../type/typeIconSocial";
+
 
 export default function InfoImage(){
     const {state} = useLocation()
@@ -22,6 +25,12 @@ export default function InfoImage(){
 
     const handleViewImage = (image:typeUnsplashImage) => {
         navigation("/details",{ state: { image: image } })
+    }
+    const social: typeInfoSocial = {
+        instagram_username: image.user.social.instagram_username || "",
+        paypal_email: image.user.social.paypal_email || "",
+        portfolio_url: image.user.social.portfolio_url || "",
+        twitter_username: image.user.social.twitter_username || ""
     }
 
     return <>
@@ -62,7 +71,10 @@ export default function InfoImage(){
             </div>
             <div className="contentRightInfoImage">
                 <div style={{position: "fixed", width: "30%"}}>
-                    <TitSection titulo="Author" subtitulo={null} />
+                    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                        <TitSection titulo="Author" subtitulo={null} />
+                        <GroupIconsSocial social={social} />
+                    </div>
                     <InfoAuthor
                     id={image.id} 
                     name={image.user.name} 
