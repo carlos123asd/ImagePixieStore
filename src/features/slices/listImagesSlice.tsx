@@ -11,7 +11,8 @@ const initialState:typeListImage = {
     error: null,
     total: 0,
     total_pages: 0,
-    tag: ""
+    tag: "",
+    user: false
 }
 
 const listImagesSlice = createSlice({
@@ -20,6 +21,9 @@ const listImagesSlice = createSlice({
     reducers: {
         setTag: (state,action) => {
             state.tag = action.payload
+        },
+        setUser: (state,action) => {
+            state.user = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -56,6 +60,7 @@ const listImagesSlice = createSlice({
         })
         .addCase(getImagesForUser.fulfilled, (state,action) => {
             state.status = 'fulfilled'
+            state.user = true
             state.data = action.payload
         })
         .addCase(getImagesForUser.rejected, (state,action) => {
@@ -64,5 +69,5 @@ const listImagesSlice = createSlice({
         })
     }
 });
-export const { setTag } = listImagesSlice.actions;
+export const { setTag,setUser } = listImagesSlice.actions;
 export default listImagesSlice.reducer;

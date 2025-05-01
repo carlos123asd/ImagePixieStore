@@ -3,13 +3,16 @@ import { IoSearch } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../features/store/store";
 import { getImagesForTag } from "../../features/thunks/getImagesForTag";
+import { setTag, setUser } from "../../features/slices/listImagesSlice";
 
 export default function Search({colorBtn}:{colorBtn:string}){
-    const dispath = useDispatch<AppDispatch>();
+    const dispatch = useDispatch<AppDispatch>();
     const [search,setSearch] = useState<string>("");
 
     const handleClickSearch = () => {
-        dispath(getImagesForTag(search))
+        dispatch(getImagesForTag(search))
+        dispatch(setUser(false))
+        dispatch((setTag("")))
     }
 
     const handleKeySearch = (e:React.KeyboardEvent<HTMLInputElement>) => {

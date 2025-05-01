@@ -5,4 +5,5 @@ export type typeListImage = {
     total: number;
     total_pages: number;
     tag: string;
+    user: boolean
 }

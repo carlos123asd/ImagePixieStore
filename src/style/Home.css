@@ -41,3 +41,18 @@
 .btnDisableFilter{
     cursor: not-allowed;
 }
+.sectionTitUserHome{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+.sectionTitUserHome h2{
+    margin: 0;
+}
+.deleteUserFilter{
+    transition: all .3s ease-out;
+}
+.deleteUserFilter:hover{
+    cursor: pointer;
+    scale: 1.1;
+}

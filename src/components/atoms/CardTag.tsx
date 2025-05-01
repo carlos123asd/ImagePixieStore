@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../features/store/store";
 import { getImagesForTag } from "../../features/thunks/getImagesForTag";
-import { setTag } from "../../features/slices/listImagesSlice";
+import { setTag, setUser } from "../../features/slices/listImagesSlice";
 
 export default function CardTag({titulo}:{titulo:string}){
     const dispatch = useDispatch<AppDispatch>()
@@ -17,6 +17,7 @@ export default function CardTag({titulo}:{titulo:string}){
     const handleClickTag = () => {
         dispatch(getImagesForTag(titulo))
         dispatch((setTag(titulo)))
+        dispatch(setUser(false))
     }
 
     return <>
