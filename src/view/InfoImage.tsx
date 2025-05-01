@@ -38,7 +38,7 @@ export default function InfoImage(){
         <div className="contentMainInfoImage">
             <div className="contentLeftInfoImage">
                 <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
-                <GroupCardTags setWord={() => {}} word={null} />
+                <GroupCardTags />
                 <TitSection titulo="More Images" subtitulo={null} />
                 <Swiper
                 className="swiper"
@@ -81,6 +81,7 @@ export default function InfoImage(){
                     </div>
                     <InfoAuthor
                     id={image.id} 
+                    username={image.user.username}
                     name={image.user.name} 
                     numPhotos={image.user.total_photos} 
                     numLikes={image.likes} 

@@ -140,6 +140,35 @@
     z-index: -1;
     border-radius: 50%;
   }
+  .sectionInfoAuthor{
+    display:flex; 
+    flex-direction:row; 
+    justify-content: space-between;
+  }
+  .sectionInfoAuthor:hover{
+    cursor: pointer;
+  }
+  .imgUser{
+     border-radius: 50%;
+     transition: all .3s ease-in-out;
+  }
+  .nameUser{
+    margin-bottom: .1em;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+  }
+  .photosNumber{
+    color: #7A8599;
+    transition: all .3s ease-in-out;
+  }
+  .sectionInfoAuthor:hover .imgUser,
+  .sectionInfoAuthor:hover .nameUser{
+    scale: 1.1;
+  }
+  .sectionInfoAuthor:hover .photosNumber{
+    scale: 1.1;
+    text-decoration: underline;
+  }
 
   @keyframes animationClick{
     0%, 100% { transform: rotatez(0deg); }

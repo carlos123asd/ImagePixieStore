@@ -3,10 +3,11 @@ import BtnAddFavoriteInfo from "../atoms/BtnAddFavoriteInfo";
 import CardInfoImage from "../atoms/CardInfoImage";
 import SectionDownload from "../atoms/SectionDownload";
 
-export default function InfoAuthor({id,name,numPhotos,numLikes,resolution,datePublish,image,download}:typeInfoAuthor){
+export default function InfoAuthor({id,username,name,numPhotos,numLikes,resolution,datePublish,image,download}:typeInfoAuthor){
     return <>
         <CardInfoImage 
         id={id}
+        username={username}
         name={name} 
         numPhotos={numPhotos} 
         numLikes={numLikes} 

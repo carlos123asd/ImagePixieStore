@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getImagesThunk } from "../thunks/getImagesThunk";
 import { typeListImage } from "../../type/typeListImage";
 import { getImagesForTag } from "../thunks/getImagesForTag";
+import { getImagesForUser } from "../thunks/getImagesForUser";
 
 
 const initialState:typeListImage = {
@@ -37,7 +38,7 @@ const listImagesSlice = createSlice({
         })
         //Thunk by tag
         .addCase(getImagesForTag.pending,(state) => {
-                    state.status = 'pending'
+            state.status = 'pending'
         })
         .addCase(getImagesForTag.fulfilled,(state,action) => {
             state.status = 'fulfilled'
@@ -46,6 +47,18 @@ const listImagesSlice = createSlice({
             state.data = action.payload?.results ?? []
         })
         .addCase(getImagesForTag.rejected,(state,action) => {
+            state.status = 'rejected'
+            state.error = action.error?.message ?? null
+        })
+        //Thunk by user
+        .addCase(getImagesForUser.pending, (state) => {
+            state.status = 'pending'
+        })
+        .addCase(getImagesForUser.fulfilled, (state,action) => {
+            state.status = 'fulfilled'
+            state.data = action.payload
+        })
+        .addCase(getImagesForUser.rejected, (state,action) => {
             state.status = 'rejected'
             state.error = action.error?.message ?? null
         })
