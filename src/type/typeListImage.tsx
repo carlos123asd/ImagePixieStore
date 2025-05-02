@@ -3,7 +3,14 @@ export type typeListImage = {
     status: 'idle' | 'fulfilled' | 'pending' | 'rejected';
     error: string | null;
     total: number;
-    total_pages: number;
+    per_page: number;
     tag: string;
-    user: boolean
+    user: boolean;
+    current_page: number;
+    links:{
+        next: string,
+        prev: string,
+        first: string,
+        last: string
+    }
 }

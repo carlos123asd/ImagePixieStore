@@ -1,0 +1,1 @@
+export const urlImagesInit = `https://api.unsplash.com/photos?page=1&per_page=30&client_id=${import.meta.env.VITE_ACCESS_KEY}`

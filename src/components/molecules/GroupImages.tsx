@@ -6,6 +6,7 @@ import Spinner from "../atoms/Spinner";
 import CardImage from "../atoms/CardImage";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { useLocalStorage } from "../../hook/useLocalStorage";
+import { urlImagesInit } from "../../features/urls/urls";
 
 export default function GroupImages(){
     const [loading,setLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function GroupImages(){
             setLoading(false);
           },1000)
         }else{
-            dispatch(getImagesThunk());
+            dispatch(getImagesThunk(urlImagesInit));
         }
     }, [dataImageList,dispatch]);
 

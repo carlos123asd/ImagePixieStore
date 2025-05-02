@@ -9,10 +9,17 @@ const initialState:typeListImage = {
     data: [],
     status: 'idle',
     error: null,
-    total: 0,
-    total_pages: 0,
     tag: "",
-    user: false
+    user: false,
+    total: 0,
+    per_page: 0,
+    current_page: 1,
+    links: {
+        next: "",
+        prev: "",
+        first: "",
+        last: ""
+    }
 }
 
 const listImagesSlice = createSlice({
@@ -34,7 +41,16 @@ const listImagesSlice = createSlice({
         })
         .addCase(getImagesThunk.fulfilled, (state,action) => {
             state.status = 'fulfilled';
-            state.data = action.payload
+            state.data = action.payload?.images
+            state.total = action.payload?.pagination.total ?? 0
+            state.per_page = action.payload?.pagination.perPage ?? 0
+            state.current_page = action.payload?.pagination.currentPage ?? 1
+            state.links = {
+                next: action.payload?.pagination.links?.next ?? "",
+                prev: action.payload?.pagination.links?.prev ?? "",
+                first: action.payload?.pagination.links?.first ?? "",
+                last: action.payload?.pagination.links?.last ?? ""
+            }
         })
         .addCase(getImagesThunk.rejected, (state,action) => {
             state.status = 'rejected'
@@ -47,7 +63,7 @@ const listImagesSlice = createSlice({
         .addCase(getImagesForTag.fulfilled,(state,action) => {
             state.status = 'fulfilled'
             state.total = action.payload?.total ?? 0
-            state.total_pages = action.payload?.total_pages ?? 0
+            state.per_page = action.payload?.total_pages ?? 0
             state.data = action.payload?.results ?? []
         })
         .addCase(getImagesForTag.rejected,(state,action) => {

@@ -53,3 +53,14 @@
     border-radius: 1em;
     z-index: -1;
 }
+.btnPagination{
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.btnPagination:hover,
+.btnPagination:hover .btnPagination{
+    cursor: pointer;
+    opacity: .6;
+    scale: 1.1;
+}

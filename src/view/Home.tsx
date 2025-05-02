@@ -10,6 +10,8 @@ import { typeUnsplashImage } from "../type/typeUnsplashImage";
 import { IoCloseSharp } from "react-icons/io5";
 import { getImagesThunk } from "../features/thunks/getImagesThunk";
 import { setUser } from "../features/slices/listImagesSlice";
+import { urlImagesInit } from "../features/urls/urls";
+import Pagination from "../components/atoms/Pagination";
 
 
 export default function Home(){
@@ -18,7 +20,7 @@ export default function Home(){
     const dispatch = useDispatch<AppDispatch>()
     
     const handleDeleteFilterUser = () => {
-         dispatch(getImagesThunk())
+         dispatch(getImagesThunk(urlImagesInit))
          dispatch(setUser(false))
     }
 
@@ -46,6 +48,7 @@ export default function Home(){
             {userState && <IoCloseSharp onClick={handleDeleteFilterUser} className="deleteUserFilter" color="red" size={30}/>}
         </div>
         <GroupImages />
+        <Pagination />
         <Footer />
     </>
 }
