@@ -41,7 +41,7 @@ const listImagesSlice = createSlice({
         })
         .addCase(getImagesThunk.fulfilled, (state,action) => {
             state.status = 'fulfilled';
-            state.data = action.payload?.images
+            state.data = action.payload?.images ?? []
             state.total = action.payload?.pagination.total ?? 0
             state.per_page = action.payload?.pagination.perPage ?? 0
             state.current_page = action.payload?.pagination.currentPage ?? 1
@@ -61,10 +61,18 @@ const listImagesSlice = createSlice({
             state.status = 'pending'
         })
         .addCase(getImagesForTag.fulfilled,(state,action) => {
+            console.log('datos',action.payload.images)
             state.status = 'fulfilled'
-            state.total = action.payload?.total ?? 0
-            state.per_page = action.payload?.total_pages ?? 0
-            state.data = action.payload?.results ?? []
+            state.data = action.payload?.images ?? []
+            state.total = action.payload?.pagination.total ?? 0
+            state.per_page = action.payload?.pagination.perPage ?? 0
+            state.current_page = action.payload?.pagination.currentPage ?? 1
+            state.links = {
+                next: action.payload?.pagination.links?.next ?? "",
+                prev: action.payload?.pagination.links?.prev ?? "",
+                first: action.payload?.pagination.links?.first ?? "",
+                last: action.payload?.pagination.links?.last ?? ""
+            }
         })
         .addCase(getImagesForTag.rejected,(state,action) => {
             state.status = 'rejected'
@@ -75,9 +83,19 @@ const listImagesSlice = createSlice({
             state.status = 'pending'
         })
         .addCase(getImagesForUser.fulfilled, (state,action) => {
+            console.log('datos',action.payload?.images);
             state.status = 'fulfilled'
             state.user = true
-            state.data = action.payload
+            state.data = action.payload?.images
+            state.total = action.payload?.pagination.total ?? 0
+            state.per_page = action.payload?.pagination.perPage ?? 0
+            state.current_page = action.payload?.pagination.currentPage ?? 1
+            state.links = {
+                next: action.payload?.pagination.links?.next ?? "",
+                prev: action.payload?.pagination.links?.prev ?? "",
+                first: action.payload?.pagination.links?.first ?? "",
+                last: action.payload?.pagination.links?.last ?? ""
+            }
         })
         .addCase(getImagesForUser.rejected, (state,action) => {
             state.status = 'rejected'

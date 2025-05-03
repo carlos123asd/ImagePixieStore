@@ -1,7 +1,6 @@
 export const parseLinkHeaders = (header:string[]) => {
     if(!header) return {}
     const link: Record<string, string> = {}
-    console.log(header)
     header.forEach((part) => {
         const section = part.split(';')
         if(section.length !== 2) return
@@ -10,7 +9,6 @@ export const parseLinkHeaders = (header:string[]) => {
         const name = section[1].replace(/rel="(.*)"/,'$1').trim()
         link[name] = url;
     })
-    console.log('link',link)
     return link
 }
 

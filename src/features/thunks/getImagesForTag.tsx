@@ -21,7 +21,7 @@ export const getImagesForTag = createAsyncThunk('imagesListByTag', async (url:st
              const limit = response.headers.get('X-Ratelimit-Limit');
              console.log(`Límites de la API: ${remaining}/${limit}`);
             return {
-                    images: json,
+                    images: json.results,
                     pagination: {
                         total: parseInt(total ? total : "0"),
                         perPage: parseInt(perPageValue ? perPageValue : "0"),

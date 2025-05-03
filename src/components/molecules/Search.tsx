@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../features/store/store";
 import { getImagesForTag } from "../../features/thunks/getImagesForTag";
 import { setTag, setUser } from "../../features/slices/listImagesSlice";
+import { urlImagesTags } from "../../features/urls/urls";
 
 export default function Search({colorBtn}:{colorBtn:string}){
     const dispatch = useDispatch<AppDispatch>();
     const [search,setSearch] = useState<string>("");
 
     const handleClickSearch = () => {
-        dispatch(getImagesForTag(search))
+        dispatch(getImagesForTag(urlImagesTags(search)))
         dispatch(setUser(false))
         dispatch((setTag("")))
     }
