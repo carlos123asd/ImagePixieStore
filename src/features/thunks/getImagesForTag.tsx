@@ -1,13 +1,37 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { extractCurrentPageFromUrl, parseLinkHeaders } from "../../utilities/parseLinkHeaders";
 
-export const getImagesForTag = createAsyncThunk('imagesListByTag', async (word:string) => {
+export const getImagesForTag = createAsyncThunk('imagesListByTag', async (url:string) => {
     try { 
-        const response = await fetch(`https://api.unsplash.com/search/photos?page=10&query=${word}&client_id=${import.meta.env.VITE_ACCESS_KEY}`)
+        const response = await fetch(url, {
+            headers: {
+                Authorization: `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
+                'Accept-Version': 'v1',
+            }
+        });
         if(response.ok){
             const json = await response.json()
-            return json
+            const linkHeader = response.headers.get("Link");
+            const total = response.headers.get("X-Total");
+            const perPageValue = response.headers.get("X-Per-Page");
+            const links = parseLinkHeaders(linkHeader ? linkHeader.split(',') : [])
+            
+             //LIMITS
+             const remaining = response.headers.get('X-Ratelimit-Remaining');
+             const limit = response.headers.get('X-Ratelimit-Limit');
+             console.log(`Límites de la API: ${remaining}/${limit}`);
+            return {
+                    images: json,
+                    pagination: {
+                        total: parseInt(total ? total : "0"),
+                        perPage: parseInt(perPageValue ? perPageValue : "0"),
+                        links,
+                        currentPage: extractCurrentPageFromUrl(url)
+                    }
+                }
         }else{
-            console.log("FAIL GET-IMAGES-BY-TAG")
+            const errorData = await response.json();
+            throw new Error(`Error ${response.status}: ${errorData.message}`);
         }
     } catch (error) {
         console.error('Error execute fetch imageListByTag:',error)

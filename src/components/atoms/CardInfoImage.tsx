@@ -5,6 +5,7 @@ import { AppDispatch } from "../../features/store/store";
 import { getImagesForUser } from "../../features/thunks/getImagesForUser";
 import { useNavigate } from "react-router-dom";
 import { setTag } from "../../features/slices/listImagesSlice";
+import { urlImageUser } from "../../features/urls/urls";
 
 export default function CardInfoImage({username,name,numPhotos,numLikes,resolution,datePublish,image}:typeInfoAuthor){
     const date = datePublish.split('T')[0];
@@ -17,7 +18,7 @@ export default function CardInfoImage({username,name,numPhotos,numLikes,resoluti
     })
 
     const handleClickUser = () => {
-        dispatch(getImagesForUser(username))
+        dispatch(getImagesForUser(urlImageUser(username)))
         dispatch(setTag(""))
         navigate('/')
     }
