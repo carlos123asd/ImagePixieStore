@@ -61,7 +61,6 @@ const listImagesSlice = createSlice({
             state.status = 'pending'
         })
         .addCase(getImagesForTag.fulfilled,(state,action) => {
-            console.log('datos',action.payload.images)
             state.status = 'fulfilled'
             state.data = action.payload?.images ?? []
             state.total = action.payload?.pagination.total ?? 0
@@ -83,7 +82,6 @@ const listImagesSlice = createSlice({
             state.status = 'pending'
         })
         .addCase(getImagesForUser.fulfilled, (state,action) => {
-            console.log('datos',action.payload?.images);
             state.status = 'fulfilled'
             state.user = true
             state.data = action.payload?.images
