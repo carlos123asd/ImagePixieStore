@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../features/store/store";
 import { setTag } from "../../features/slices/listImagesSlice";
 import { getImagesThunk } from "../../features/thunks/getImagesThunk";
+import { urlImagesInit } from "../../features/urls/urls";
 
 export default function GroupCardTags(){
     const dispatch = useDispatch<AppDispatch>()
@@ -12,7 +13,7 @@ export default function GroupCardTags(){
 
     const handleRemoveKeyWord = () => { 
         dispatch(setTag(""))
-        dispatch(getImagesThunk())
+        dispatch(getImagesThunk(urlImagesInit))
     }
 
     return <>

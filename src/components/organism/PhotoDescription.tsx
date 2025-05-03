@@ -24,26 +24,20 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             color={closeHover ? "#fff" : "#f0f1f5d6"} 
             size={100} 
             className="closeBtnModal" />
-            <Atropos style={{width:"60%",alignSelf:"center", padding: "2em 0"}}>
-                <div
-                style={{
-                    width: "100%",
-                    height: "auto",
-                }}
-                >
+            <Atropos style={{width:"60%", height:"100%", display:"flex",alignItems:"center"}}>
                 <img
                     src={url}
                     alt={descripcion || "image"}
                     style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     borderRadius: "1em",
                     }}
                 />
-                </div>
             </Atropos>
         </div>
+        
         <div onClick={handleShowModal} className="contentImageInfoImage">
             <div className="clickIconInfoPhoto">
                 <GiClick size={30} color="#fff"/>

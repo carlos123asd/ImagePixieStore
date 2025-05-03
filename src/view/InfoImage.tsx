@@ -34,65 +34,65 @@ export default function InfoImage(){
     }
 
     return <>
-        <Nav />
-        <div className="contentMainInfoImage">
-            <div className="contentLeftInfoImage">
-                <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
-                <GroupCardTags />
-                <TitSection titulo="More Images" subtitulo={null} />
-                <Swiper
-                className="swiper"
-                style={{width: "80%"}}
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                navigation
-                pagination={{ clickable: true }}
-                slidesPerView={'auto'}
-                coverflowEffect={{
-                   rotate: 50,
-                   stretch: 0,
-                   depth: 100,
-                   modifier: 1,
-                   slideShadows: true,
-                 }}
-                modules={[EffectCoverflow,Navigation,Pagination]}
-                >   {
-                        ListImageSwiper && ListImageSwiper.map((imageSwiper:typeUnsplashImage) => {
-                            return <SwiperSlide className="swiper-slide">
-                                <img style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                                borderRadius: "1em",}} 
-                                onClick={() => handleViewImage(imageSwiper)}
-                                src={imageSwiper.urls.full} 
-                                alt={imageSwiper.alt_description ? imageSwiper.alt_description : "image not found"} />
-                                </SwiperSlide>
-                        })
-                    }
-                </Swiper>
-            </div>
-            <div className="contentRightInfoImage">
-                <div style={{position: "fixed", width: "30%"}}>
-                    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                        <TitSection titulo="Author" subtitulo={null} />
-                        <GroupIconsSocial social={social} />
+            <Nav />
+            <div className="contentMainInfoImage">
+                <div className="contentLeftInfoImage">
+                    <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
+                    <GroupCardTags />
+                    <TitSection titulo="More Images" subtitulo={null} />
+                    <Swiper
+                    className="swiper"
+                    style={{width: "80%"}}
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    navigation
+                    pagination={{ clickable: true }}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                    }}
+                    modules={[EffectCoverflow,Navigation,Pagination]}
+                    >   {
+                            ListImageSwiper && ListImageSwiper.map((imageSwiper:typeUnsplashImage) => {
+                                return <SwiperSlide className="swiper-slide">
+                                    <img style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "1em",}} 
+                                    onClick={() => handleViewImage(imageSwiper)}
+                                    src={imageSwiper.urls.full} 
+                                    alt={imageSwiper.alt_description ? imageSwiper.alt_description : "image not found"} />
+                                    </SwiperSlide>
+                            })
+                        }
+                    </Swiper>
+                </div>
+                <div className="contentRightInfoImage">
+                    <div style={{position: "fixed", width: "30%"}}>
+                        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                            <TitSection titulo="Author" subtitulo={null} />
+                            <GroupIconsSocial social={social} />
+                        </div>
+                        <InfoAuthor
+                        id={image.id} 
+                        username={image.user.username}
+                        name={image.user.name} 
+                        numPhotos={image.user.total_photos} 
+                        numLikes={image.likes} 
+                        resolution={`${image.width} x ${image.height}`} 
+                        datePublish={image.created_at} 
+                        image={image.user.profile_image.medium}
+                        download={image.urls.full}
+                        />
                     </div>
-                    <InfoAuthor
-                    id={image.id} 
-                    username={image.user.username}
-                    name={image.user.name} 
-                    numPhotos={image.user.total_photos} 
-                    numLikes={image.likes} 
-                    resolution={`${image.width} x ${image.height}`} 
-                    datePublish={image.created_at} 
-                    image={image.user.profile_image.medium}
-                    download={image.urls.full}
-                    />
                 </div>
             </div>
-        </div>
-        <Footer />
+            <Footer />
     </>
 }

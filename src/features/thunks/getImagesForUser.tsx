@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { extractCurrentPageFromUrl, parseLinkHeaders } from "../../utilities/parseLinkHeaders";
 
 export const getImagesForUser = createAsyncThunk('imageListForUser', async (url:string) => {
-    try {
         const response = await fetch(url, {
             headers: {
                 Authorization: `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
@@ -33,7 +32,4 @@ export const getImagesForUser = createAsyncThunk('imageListForUser', async (url:
             const errorData = await response.json();
             throw new Error(`Error ${response.status}: ${errorData.message}`);
         }
-    } catch (error) {
-        console.error("error get Images List For User: "+error)
-    }
 })
