@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../features/store/store";
 import GroupIconsSocial from "../components/molecules/GroupIconsSocial";
 import { typeInfoSocial } from "../type/typeIconSocial";
+import { useEffect, useState } from "react";
 
 
 export default function InfoImage(){
@@ -22,6 +23,14 @@ export default function InfoImage(){
     const ListImageSwiper = dataImageList.filter((imageList) => {
         return imageList.id !== image.id
     }).slice(0,9)
+    const [widthWindow,setWidthWindow] = useState<number>(window.innerWidth)
+
+    useEffect(() => {
+        const handleResize = () => setWidthWindow(window.innerWidth)
+        window
+        .addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize',handleResize)
+    }, [])
 
     const handleViewImage = (image:typeUnsplashImage) => {
         navigation("/details",{ state: { image: image } })
@@ -38,6 +47,26 @@ export default function InfoImage(){
             <div className="contentMainInfoImage">
                 <div className="contentLeftInfoImage">
                     <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
+                    {
+                     widthWindow < 1130  && 
+                        <div style={{width: "90%", margin:"1.5em auto 0 auto",}}>
+                            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom:"1em"}}>
+                                <TitSection titulo="Author" subtitulo={null} />
+                                <GroupIconsSocial social={social} />
+                            </div>
+                            <InfoAuthor
+                            id={image.id} 
+                            username={image.user.username}
+                            name={image.user.name} 
+                            numPhotos={image.user.total_photos} 
+                            numLikes={image.likes} 
+                            resolution={`${image.width} x ${image.height}`} 
+                            datePublish={image.created_at} 
+                            image={image.user.profile_image.medium}
+                            download={image.urls.full}
+                            />
+                        </div>
+                    }
                     <GroupCardTags />
                     <TitSection titulo="More Images" subtitulo={null} />
                     <Swiper
@@ -73,6 +102,8 @@ export default function InfoImage(){
                         }
                     </Swiper>
                 </div>
+                {
+                widthWindow > 1130 &&
                 <div className="contentRightInfoImage">
                     <div style={{position: "fixed", width: "30%"}}>
                         <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
@@ -92,6 +123,7 @@ export default function InfoImage(){
                         />
                     </div>
                 </div>
+                }
             </div>
             <Footer />
     </>

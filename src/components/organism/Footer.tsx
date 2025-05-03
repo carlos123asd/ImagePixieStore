@@ -9,8 +9,8 @@ export default function Footer(){
                 <RiContrastFill color="black" size={30} />
                 <span className="titnav">PixieStore</span>
             </div>
-            <div style={{marginRight: "3em"}}>
-                <div style={{display: "flex", alignItems: "center", gap:"2em"}}>
+            <div className="contentMainInfoFooter">
+                <div className="contentFooter">
                     <div style={{display: "flex", flexDirection: "column", fontWeight: "600"}}>
                         <span className="infoHeader">@AlexDev</span>
                         <span className="infoHeader">carlos.med.dev@gmail.com</span>

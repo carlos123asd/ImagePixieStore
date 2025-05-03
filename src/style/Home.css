@@ -47,7 +47,7 @@
 }
 .btnDisableFilter{
     cursor: not-allowed;
-    font-size: "1.4rem",
+    font-size: 1.4rem;
 }
 .sectionTitUserHome{
     display: flex;
@@ -91,7 +91,7 @@
     padding: 0 2em;
 }
 
-@media only screen and (min-width:390px) {
+@media only screen and (max-width:768px) {
     .groupCard{
         flex-direction: column;
         margin: 0;
