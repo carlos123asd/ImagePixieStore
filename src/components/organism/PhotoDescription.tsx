@@ -16,7 +16,7 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
     }
 
     return <>
-        <div style={{display: modal ? "flex" : "none"}} className="modalPhotoInfo">
+        <div style={{display: modal ? "block" : "none"}} className="modalPhotoInfo">
             <IoIosCloseCircle 
             onClick={handleShowModal} 
             onMouseEnter={() => setCloseHover(true)} 
@@ -24,7 +24,7 @@ export default function PhotoDescription({url, descripcion, alt}:{url:string,des
             color={closeHover ? "#fff" : "#f0f1f5d6"} 
             size={100} 
             className="closeBtnModal" />
-            <Atropos style={{width:"60%", height:"100%", display:"flex",alignItems:"center"}}>
+            <Atropos style={{width:"100%", height:"max-content", padding:"3em 0"}}>
                 <img
                     src={url}
                     alt={descripcion || "image"}
