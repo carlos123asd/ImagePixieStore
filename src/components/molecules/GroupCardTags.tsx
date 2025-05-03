@@ -17,18 +17,8 @@ export default function GroupCardTags(){
     }
 
     return <>
-        <div style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 3%",
-        }}>
-            <div style={{
-                display:"flex",
-                gap: "1em",
-                margin: "2em 0",
-                flexWrap: "wrap"
-            }}>
+        <div className="groupCard">
+            <div className="contentCards">
                 {
                     recordTags.map((tag:typeTags,index:number) => {
                         return <CardTag key={index} titulo={tag.name} />
@@ -38,7 +28,6 @@ export default function GroupCardTags(){
             <span 
             onClick={handleRemoveKeyWord} 
             style={{
-                fontSize: "1.4rem",
                 textShadow: word ? "0 0 10px #2194F2" : "",
                 color: word ? "#2194F2be" : "#93A4B5"
             }} 

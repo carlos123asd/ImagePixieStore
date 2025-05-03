@@ -31,13 +31,8 @@ export default function Pagination(){
     }
 
     return <>
-        <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 2em"
-        }}>
-            <div>
+        <div className="pagination">
+            <div className="countPagination">
                 {`${(per_page * current_page)} of ${total} images`}
             </div>
             <div style={{

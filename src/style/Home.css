@@ -17,6 +17,12 @@
     opacity: 0.1;
     border-radius: 1em;
 }
+.cardTagActive{
+    scale: 1.1;
+    box-shadow: 0 0 10px 1px #2194F2;
+    color: #2194F2;
+    background: #fff;
+}
 .cardTag:hover{
     cursor: pointer;
     scale: 1.1;
@@ -31,6 +37,7 @@
 }
 .btnRemoveFilter{
     transition: all .3s ease-in-out;
+    font-size: "1.4rem",
 }
 .btnRemoveFilter:hover{
     cursor: pointer;
@@ -40,6 +47,7 @@
 }
 .btnDisableFilter{
     cursor: not-allowed;
+    font-size: "1.4rem",
 }
 .sectionTitUserHome{
     display: flex;
@@ -55,4 +63,68 @@
 .deleteUserFilter:hover{
     cursor: pointer;
     scale: 1.1;
+}
+.groupCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+}
+.contentCards{
+    display:flex;
+    gap: 1em;
+    margin: 2em 0;
+    flex-wrap: wrap;
+}
+.tituloSection{
+    width: max-content;
+    padding: 0 2%;
+}
+.countPagination{
+    width:"max-content";
+    font-size: .9rem;
+}
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+
+@media only screen and (min-width:390px) {
+    .groupCard{
+        flex-direction: column;
+        margin: 0;
+    }
+    .contentCards{
+        margin: 1em 0 1em 0;
+        gap: .3em;
+    }
+    .tituloSection{
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        width: auto;
+    }
+    .cardTag{
+        padding: .8em 1.5em;
+    }
+    .btnDisableFilter,.btnRemoveFilter{
+        margin-bottom: 1em;
+        font-size: 1.1rem !important;
+    }
+    .btnDisableFilter:hover{
+        font-size: 2rem;
+    }
+    .cardTagActive{
+        scale: 1;
+    }
+    .pagination{
+        padding: 0 .5em;
+    }
+    .contentTitSection{
+        width: 100% !important;
+    }
+    .sectionTitUserHome{
+        width: 100%;
+    }
 }

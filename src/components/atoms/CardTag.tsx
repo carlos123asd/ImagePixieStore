@@ -8,13 +8,6 @@ export default function CardTag({titulo}:{titulo:string}){
     const dispatch = useDispatch<AppDispatch>()
     const word = useSelector<RootState>((state) => state.images.tag)
 
-    const styleActive = {
-        scale: "1.1",
-        boxShadow: "0 0 10px 1px #2194F2",
-        color: "#2194F2",
-        background: "#fff",
-    }
-
     const handleClickTag = () => {
         dispatch(getImagesForTag(urlImagesTags(titulo)))
         dispatch((setTag(titulo)))
@@ -24,8 +17,7 @@ export default function CardTag({titulo}:{titulo:string}){
     return <>
         <div 
         onClick={handleClickTag} 
-        style={word === titulo ? styleActive : {}}
-        className="backgroundSegundary cardTag">
+        className={`backgroundSegundary cardTag ${word === titulo ? "cardTagActive" : ""}`}>
             {titulo}
         </div>
     </>

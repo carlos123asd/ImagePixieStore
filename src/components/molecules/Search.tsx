@@ -24,17 +24,7 @@ export default function Search({colorBtn}:{colorBtn:string}){
     }
 
     return <>
-        <div style={{
-            width: "25%",
-            height: "60px",
-            background:"white",
-            display: "flex",
-            alignItems: "center",
-            borderRadius: "1em",
-            padding: "0 .5em",
-            paddingLeft: ".5em",
-            border: "1px solid #DBE0E5"
-        }}>
+        <div className="search">
             <IoSearch size={35} color="#899AA7" />
             <input 
             onKeyDown={handleKeySearch}

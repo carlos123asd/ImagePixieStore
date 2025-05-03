@@ -68,3 +68,13 @@
 .btnPaginationDisable:hover{
     cursor: not-allowed
 }
+
+@media only screen and (min-width:390px) {
+    .images {
+        columns: 1;
+        margin-top: 0;
+    }
+    .images__image{
+        margin-bottom: 5px;
+    }
+}

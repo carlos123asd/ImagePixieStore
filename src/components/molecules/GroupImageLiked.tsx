@@ -6,7 +6,7 @@ export default function GroupImageLiked(){
     const {collection,likeImageStorage} = useLocalStorage("imageLiked",[]);
 
     return  <>
-        <div className="images">
+        <div className="images imagesResponsive">
             {
                 collection && collection.map((imageLiked:typeUnsplashImage,index:number) => {
                     return <CardImageLiked likeImageStorage={likeImageStorage} info={imageLiked} key={index} />

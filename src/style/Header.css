@@ -72,3 +72,43 @@
 .btnBuscar:hover{
     cursor: pointer;
 }
+.search{
+    width: 25%;
+    height: 60px;
+    background:white;
+    display: flex;
+    align-items: center;
+    border-radius: 1em;
+    padding: 0 .5em;
+    padding-left: .5em;
+    border: 1px solid #DBE0E5;
+}
+
+@media only screen and (min-width:390px) {
+    .header {
+        gap: 1.5em;
+    }
+    .header_content_tit{
+        font-size: 3.5rem;
+    }
+    .header_content_sub{
+        font-size: 1rem;
+    }
+    .backHeader,.header{
+        height: 400px;
+    }
+    .search{
+        width: 70%;
+        height: 40px;
+        padding: .2em;
+    }
+    .inputBuscar{
+        width: 100%;
+        height: auto;
+        padding: .5em;
+    }
+    .btnBuscar{
+        font-size: .8rem;
+        height: auto;
+    }
+}
