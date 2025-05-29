@@ -26,7 +26,7 @@ export default function GroupImages(){
                 setListImages(dataImageList);
                 setTimeout(() => {
                     dispatch(setPendingState(false));
-                },8000)
+                },5000)
             })
         }
     }, [dataImageList,dispatch]);
