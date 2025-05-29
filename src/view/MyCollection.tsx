@@ -7,8 +7,11 @@ export default function MyCollection(){
 
     return <>
         <Nav />
-        <TitSection titulo="My images" subtitulo="Your Personal Collection"/>
-        <GroupImageLiked />
+        <div className="main-content">
+            <TitSection titulo="My images" subtitulo="Your Personal Collection"/>
+            <GroupImageLiked />
+        </div>
         <Footer />
+    
     </>
 }

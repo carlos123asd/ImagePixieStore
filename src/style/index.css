@@ -7,6 +7,15 @@
   --font-primary: 'Inter', sans-serif
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-content {
+  flex: 1;
+}
+
 body {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);

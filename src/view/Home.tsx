@@ -26,29 +26,31 @@ export default function Home(){
 
     return <>
         <Nav />
-        <Header />
-        <TitSection titulo="Trending searches" subtitulo={null} />
-        <GroupCardTags />
-        <div  style={{display: "flex", paddingLeft:"2%", gap:".5em", alignItems: "center"}}>
-            {
-                userState ? 
-                <img style={{
-                    borderRadius: "50%"
-                }} 
-                src={images[0].user.profile_image.large} 
-                alt="Image Profile" /> : 
-                <></>
-            }
-            <div className="sectionTitUserHome">
-                <TitSection
-                titulo={userState ? images[0].user.username : "New & Notable"} 
-                subtitulo={null} />
-                {userState && <span>Photos: {String(images[0].user.total_photos)} images</span>}
+        <div className="main-content">
+            <Header />
+            <TitSection titulo="Trending searches" subtitulo={null} />
+            <GroupCardTags />
+            <div  style={{display: "flex", paddingLeft:"2%", gap:".5em", alignItems: "center"}}>
+                {
+                    userState ? 
+                    <img style={{
+                        borderRadius: "50%"
+                    }} 
+                    src={images[0].user.profile_image.large} 
+                    alt="Image Profile" /> : 
+                    <></>
+                }
+                <div className="sectionTitUserHome">
+                    <TitSection
+                    titulo={userState ? images[0].user.username : "New & Notable"} 
+                    subtitulo={null} />
+                    {userState && <span>Photos: {String(images[0].user.total_photos)} images</span>}
+                </div>
+                {userState && <IoCloseSharp onClick={handleDeleteFilterUser} className="deleteUserFilter" color="red" size={30}/>}
             </div>
-            {userState && <IoCloseSharp onClick={handleDeleteFilterUser} className="deleteUserFilter" color="red" size={30}/>}
+            <GroupImages />
+            <Pagination />
         </div>
-        <GroupImages />
-        <Pagination />
         <Footer />
     </>
 }

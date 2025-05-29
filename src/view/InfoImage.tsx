@@ -43,12 +43,13 @@ export default function InfoImage(){
     }
 
     return <>
-            <Nav />
+        <Nav />
+        <div className="main-content">
             <div className="contentMainInfoImage">
                 <div className="contentLeftInfoImage">
                     <PhotoDescription url={image.urls.full} descripcion={image.description} alt={image.alt_description} />
                     {
-                     widthWindow < 1130  && 
+                        widthWindow < 1130  && 
                         <div style={{width: "90%", margin:"1.5em auto 0 auto",}}>
                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom:"1em"}}>
                                 <TitSection titulo="Author" subtitulo={null} />
@@ -125,6 +126,7 @@ export default function InfoImage(){
                 </div>
                 }
             </div>
-            <Footer />
+        </div>
+        <Footer />
     </>
 }
