@@ -14,11 +14,7 @@ export const getImagesThunk = createAsyncThunk('imagesList', async (url:string) 
         const total = response.headers.get("X-Total");
         const perPageValue = response.headers.get("X-Per-Page");
         const links = parseLinkHeaders(linkHeader ? linkHeader.split(',') : [])
-
-        //LIMITS
-        const remaining = response.headers.get('X-Ratelimit-Remaining');
-        const limit = response.headers.get('X-Ratelimit-Limit');
-        console.log(`Límites de la API: ${remaining}/${limit}`);
+        
         return {
             images: json,
             pagination: {

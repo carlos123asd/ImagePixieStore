@@ -1,47 +1,53 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useTransition } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getImagesThunk } from "../../features/thunks/getImagesThunk";
 import { AppDispatch, RootState } from "../../features/store/store";
-import Spinner from "../atoms/Spinner";
 import CardImage from "../atoms/CardImage";
 import { typeUnsplashImage } from "../../type/typeUnsplashImage";
 import { useLocalStorage } from "../../hook/useLocalStorage";
 import { urlImagesInit } from "../../features/urls/urls";
+import ImageGridSkeleton from "../atoms/ImageGridSkeleton";
+import { setPendingState } from "../../features/slices/listImagesSlice";
 
 export default function GroupImages(){
-    const [loading,setLoading] = useState(true);
+    const [_, startTransition] = useTransition();
     const dispatch = useDispatch<AppDispatch>();
     const dataImageList = useSelector<RootState, typeUnsplashImage[]>((state) => state.images.data);
+    const isPending = useSelector<RootState, boolean>((state) => state.images.isPending);
     const [listImages, setListImages] = useState<typeUnsplashImage[]>([]);
     const {likeImageStorage,collection} = useLocalStorage('imageLiked',[]);
 
     useEffect(() => {
-        setLoading(true);
-        if (dataImageList.length > 0) {
-          setListImages(dataImageList);
-          setTimeout(() => {
-            setLoading(false);
-          },1000)
-        }else{
+        if (dataImageList.length === 0) {
             dispatch(getImagesThunk(urlImagesInit));
+        } else {
+            dispatch(setPendingState(true));
+            startTransition(() => {
+                setListImages(dataImageList);
+                setTimeout(() => {
+                    dispatch(setPendingState(false));
+                },8000)
+            })
         }
     }, [dataImageList,dispatch]);
 
     return <>
-        {
-            loading && <div style={{display: "flex", justifyContent:"center", margin:"2em 0"}}>
-                <Spinner />
-            </div>
-        }
-        {
-            !loading && <div className="images">
-                {
-                    listImages.map((image:typeUnsplashImage, index:number) => {
-                        const isLiked = collection.some((imageCollection) => imageCollection.id === image.id)
-                        return <CardImage key={index} isLiked={isLiked}  info={image} likeImageStorage={likeImageStorage} />
-                    })
-                }
-            </div>
-        }
+        <div className="images">
+            {isPending ? (
+                <ImageGridSkeleton collection={listImages} />
+            ) : (
+                listImages.map((image, index) => {
+                const isLiked = collection.some((img) => img.id === image.id);
+                return (
+                    <CardImage
+                    key={`${image.id}-${index}`}
+                    isLiked={isLiked}
+                    info={image}
+                    likeImageStorage={likeImageStorage}
+                    />
+                );
+                })
+            )}
+        </div>
     </>
 }

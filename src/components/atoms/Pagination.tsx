@@ -10,24 +10,18 @@ export default function Pagination(){
     const {next,prev,first,last} =  useSelector((state: RootState) => state.images.links as { next: string; prev: string; first: string; last: string })
     const {current_page,total,per_page} = useSelector((state: RootState) => state.images as {current_page:number;total:number;per_page:number})
 
-    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
     const handlePagination = (action:string) => {
+        let url = "";
         if(action==="first"){
-            delay(1000)
-            dispatch(getImagesThunk(first))
+            url=first
         }else if(action==="back"){
-            delay(1000)
-            dispatch(getImagesThunk(prev))
+            url=prev
         }else if(action==="next"){
-            delay(1000)
-            console.log(next)
-            dispatch(getImagesThunk(next))
+            url=next
         }else{
-            delay(1000)
-            console.log(last)
-            dispatch(getImagesThunk(last))
+            url=last
         }
+        dispatch(getImagesThunk(url))
     }
 
     return <>

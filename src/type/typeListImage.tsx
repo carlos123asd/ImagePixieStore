@@ -7,6 +7,7 @@ export type typeListImage = {
     tag: string;
     user: boolean;
     current_page: number;
+    isPending: true,
     links:{
         next: string,
         prev: string,

@@ -14,6 +14,7 @@ const initialState:typeListImage = {
     total: 0,
     per_page: 0,
     current_page: 1,
+    isPending: true,
     links: {
         next: "",
         prev: "",
@@ -31,6 +32,9 @@ const listImagesSlice = createSlice({
         },
         setUser: (state,action) => {
             state.user = action.payload
+        },
+        setPendingState: (state, action) => {
+            state.isPending = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -101,5 +105,5 @@ const listImagesSlice = createSlice({
         })
     }
 });
-export const { setTag,setUser } = listImagesSlice.actions;
+export const { setTag,setUser,setPendingState} = listImagesSlice.actions;
 export default listImagesSlice.reducer;
