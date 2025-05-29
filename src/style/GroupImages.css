@@ -68,19 +68,18 @@
 .btnPaginationDisable:hover{
     cursor: not-allowed
 }
-
-@media only screen and (max-width:390px) {
+@media only screen and (max-width:1024px) {
     .images {
-        columns: 1;
+        columns: 2;
         margin-top: 0;
     }
     .images__image{
         margin-bottom: 5px;
     }
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:430px) {
     .images {
-        columns: 2;
+        columns: 1;
         margin-top: 0;
     }
     .images__image{

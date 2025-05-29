@@ -5,8 +5,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2em 4em
+    padding: 2em 4em;
 }
 .contentRightInfoImage{
     width: 50%;
@@ -87,17 +86,20 @@
     color: white;
     margin: 0;
   }
-
+  .contentPhotoModal{
+    height: 90%;
+    margin: 0 auto;
+  }
   .modalPhotoInfo{
     display: none;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    left: calc(50% - 30%);
-    width: 60%;
+    position: fixed;
+    left: 0;
+    width:100%;
     height: 100%;
+    top: 0;
     z-index: 10;
     overflow-x: visible;
+    align-items: center;
   }
   .modalPhotoInfo::before{
     content: '';
