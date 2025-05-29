@@ -118,6 +118,7 @@
     right: 5%;
     top:  5%;
     transition: all .3s ease;
+    z-index: 30;
   }
   .closeBtnModal:hover{
     cursor: pointer;
@@ -219,6 +220,12 @@
     .swiper {
       padding-top: 1em !important;
       height: 350px;
+    }
+    .closeBtnModal{
+      width: 60px;
+      height: 60px;
+      top: 2%;
+      right: 2%;
     }
   }
 
